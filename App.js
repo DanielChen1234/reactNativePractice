@@ -26,14 +26,14 @@ export default class App extends Component {
 
   placeSubmitHandler = (place) => {
     this.setState({
-      places: [...this.state.places, place]
+      places: [...this.state.places, {key: Math.random(), value: place}]
     })
   }
 
   placeDeletedHandler = (index) => {
     this.setState({
       places: this.state.places.filter((ele, idx) => {
-        return idx !== index
+        return ele.key !== index
       })
     })
   }

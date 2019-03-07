@@ -28,14 +28,22 @@ export default class App extends Component {
     this.setState({
       places: [...this.state.places, place]
     })
-}
+  }
+
+  placeDeletedHandler = (index) => {
+    this.setState({
+      places: this.state.places.filter((ele, idx) => {
+        return idx !== index
+      })
+    })
+  }
 
   render() {
     return (
       <View style={styles.container}>
         <PlaceInput onPlaceAdded={this.placeSubmitHandler} />
 
-        <PlaceList places={this.state.places} />
+        <PlaceList places={this.state.places} onItemDeleted={this.placeDeletedHandler} />
       </View>
     );
   }
